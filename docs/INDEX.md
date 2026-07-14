@@ -1,24 +1,34 @@
 # Kempape Rules Documentation
 
-This directory contains the canonical Markdown handoffs for the Kempape MVP.
+Canonical Markdown handoffs for the Kempape MVP.
+
+## Architecture freeze
+
+- [Repository audit](architecture/00_REPOSITORY_AUDIT.md)
+- [Documentation inventory](architecture/01_DOCUMENTATION_INVENTORY.md)
+- [Source of truth](architecture/02_SOURCE_OF_TRUTH.md)
+- [Conflicts and open decisions](architecture/03_CONFLICTS_AND_OPEN_DECISIONS.md)
+- [System architecture](architecture/04_SYSTEM_ARCHITECTURE.md)
+- [Domain boundaries](architecture/05_DOMAIN_BOUNDARIES.md)
+- [Domain data model](architecture/06_DOMAIN_DATA_MODEL.md)
+- [Transaction boundaries](architecture/07_TRANSACTION_BOUNDARIES.md)
+- [Command and event map](architecture/08_COMMAND_AND_EVENT_MAP.md)
+- [Time and realtime](architecture/09_TIME_AND_REALTIME_ARCHITECTURE.md)
+- [Asset registry plan](architecture/10_ASSET_REGISTRY_PLAN.md)
+- [Security and integrity](architecture/11_SECURITY_AND_INTEGRITY.md)
+- [Test strategy](architecture/12_TEST_STRATEGY.md)
+- [Implementation roadmap](architecture/13_IMPLEMENTATION_ROADMAP.md)
 
 ## Authority
 
-1. `rules/config.md` owns fixed timing, timezone, final-midnight behavior, and the Chaos resolution window.
-2. `rules/game-lifecycle-and-reset.md` owns game runs, testing, phases, reset, pause, and end behavior.
-3. `rules/validation-pool.md` owns the shared two-tab validation interface and the no-rejection rule.
-4. Each system-specific document owns the mechanics named in its title.
-5. `ASSETS.md` owns runtime asset locations and naming.
-6. `DECISIONS-2026-07-14.md` records the latest approved cross-system decisions.
+1. `rules/config.md` owns fixed timing, timezone, final-midnight behavior and Chaos resolution.
+2. [July 15 corrections](DECISIONS-2026-07-15.md) are the latest authority for Action rejection/expiry, capped Level-40 XP and pause confirmation.
+3. [July 14 decisions](DECISIONS-2026-07-14.md) remain authoritative for topics not superseded on July 15.
+4. `rules/game-lifecycle-and-reset.md` owns runs, testing, reset, global pause and end.
+5. Each dedicated system document owns its unaffected mechanics.
+6. `ASSETS.md` owns runtime locations/naming; the reviewed manifest will own exact mappings.
 
-Do not keep older TXT copies beside these canonical Markdown files.
-
-## Cross-System Rules
-
-- [Approved Flow Decisions](DECISIONS-2026-07-14.md)
-- [Asset Locations and Naming](ASSETS.md)
-
-## Rule Files
+## Rule files
 
 - [Actions](rules/actions.md)
 - [Admin & Game Control](rules/admin-and-game-control.md)
@@ -41,13 +51,11 @@ Do not keep older TXT copies beside these canonical Markdown files.
 - [Validation Pool](rules/validation-pool.md)
 - [XP & Levels](rules/xp-system.md)
 
-## Instructions for Codex
+## Durable instructions
 
-- Read `AGENTS.md`, this index, the decision record, and all relevant rules before coding.
-- Do not silently change probabilities, rewards, cooldowns, limits, validation rules, or timing.
-- There is no normal-player rejection operation for Actions or Chaos Cards.
-- All gameplay state must be scoped to the active `game_run_id`.
-- All gameplay mutations must be server-authoritative, authenticated, atomic, idempotent, and safe after reconnect.
-- Realtime delivery never replaces server-side state checks.
-- Add or update automated tests whenever a mechanic changes.
-- Record any remaining unresolved assumption before implementing it.
+- Apply dated decisions before older conflicting prose; record unresolved assumptions.
+- Normal Actions use Accept/Reject and two-hour expiry. Chaos remains validation-only.
+- Clamp XP at Level 40; ranking may contain competition ties.
+- Scope gameplay to active `game_run_id`; mutations are authenticated, server-authoritative, atomic, idempotent and server-timed.
+- Realtime is not truth; refetch on load, focus and reconnect.
+- Never invent values or asset substitutions. Add tests for changed mechanics.

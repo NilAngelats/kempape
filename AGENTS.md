@@ -2,22 +2,14 @@
 
 Before implementing or modifying Kempape:
 
-1. Read `docs/INDEX.md`.
-2. Read `docs/DECISIONS-2026-07-14.md`.
-3. Read all relevant documents under `docs/rules/`.
-4. Read `docs/ASSETS.md` before implementing visual components.
-5. Treat `docs/rules/config.md` as authoritative for fixed festival timing and the July 20 exception.
-6. Treat `docs/rules/game-lifecycle-and-reset.md` as authoritative for game runs, testing, reset, pause, and end behavior.
-7. Treat `docs/rules/validation-pool.md` as authoritative for the two validation tabs and the no-rejection rule.
-8. Do not silently invent or modify game rules.
-9. Scope every gameplay row and mutation to the active `game_run_id`.
-10. Keep gameplay mutations server-authoritative, authenticated, atomic, and idempotent.
-11. Use server time for cooldowns, Hospital timers, game phases, daily keys, and event boundaries.
-12. Enforce Hospital, Chaos-lock, pause, end, and stale-run restrictions on the server.
-13. Realtime events are not the source of truth; refetch authoritative state on load, focus, and reconnect.
-14. Prioritize database correctness, synchronization, and recovery before notifications and animations.
-15. Add automated tests for every changed mechanic and edge case.
-16. Runtime artwork must load from `public/assets/`.
-17. Match assets through canonical IDs, `imageKey`, and `public/assets/manifest.json`.
-18. Do not guess or silently substitute missing asset files.
-19. Never commit invite codes, session secrets, Supabase secret keys, or database credentials.
+1. Read `docs/INDEX.md`, the latest dated decisions, relevant `docs/rules/`, and relevant `docs/architecture/` files.
+2. Latest explicit dated decisions override older conflicting prose only for their named topics; never silently invent or change rules.
+3. `rules/config.md` owns timing/July 20; lifecycle owns runs/reset/global pause/end. July 15 owns normal Action Accept/Reject/two-hour expiry and capped Level-40 XP.
+4. Read `docs/ASSETS.md` before visual work. Runtime art uses `public/assets/manifest.json`, canonical IDs and `imageKey`; never guess missing art.
+5. Scope gameplay rows/mutations to active `game_run_id`; reject stale runs.
+6. Mutations are server-authoritative, authenticated, authorized, atomic, idempotent, and use server time and secure randomness.
+7. Enforce Hospital, Chaos lock, pause, end and phase restrictions server-side. Realtime is invalidation, never truth; refetch on load/focus/reconnect.
+8. Treat `supabase/migrations/0001_initial_schema.sql` as pre-freeze scaffold. Replace only if never applied importantly; otherwise add forward migrations. Never rewrite shared migration history.
+9. Keep gameplay values integral and follow dedicated rounding order. Clamp total XP to the configured Level-40 threshold.
+10. Add mechanic, transaction, concurrency, stale-run, reconnect and boundary tests as applicable. Run `npm run check`.
+11. Never commit invite codes, session secrets, Supabase secret keys, database credentials or `.env.local`.
