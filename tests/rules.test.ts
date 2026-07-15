@@ -7,6 +7,7 @@ import {
   totalXpRequiredToReachLevel,
   xpNeededForNextLevel,
   xpRewardBasisForLevel,
+  normalizeTotalXpAfterGain,
 } from "@/lib/game/xp";
 import { ACTIONS } from "@/lib/game/actions";
 import { EQUIPMENT_DEFINITIONS } from "@/lib/game/items";
@@ -49,9 +50,10 @@ describe("XP curve", () => {
     expect(MAX_LEVEL_THRESHOLD).toBe(40130);
   });
 
-  it("uses a deterministic virtual XP basis at Level 40 for ranking", () => {
+  it("caps rewards and XP at Level 40", () => {
     expect(MAX_LEVEL_RANKING_XP_BASIS).toBe(4110);
-    expect(xpRewardBasisForLevel(40)).toBe(4110);
+    expect(xpRewardBasisForLevel(40)).toBeNull();
+    expect(normalizeTotalXpAfterGain(50_000)).toBe(40_130);
   });
 });
 

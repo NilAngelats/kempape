@@ -1,15 +1,10 @@
-import { z } from "zod";
+import "server-only";
+import { serverEnvSchema, type ServerEnv } from "@/lib/server/env-schema";
+export { publicEnvSchema, serverEnvSchema, parseServerEnv } from "@/lib/server/env-schema";
+export type { ServerEnv } from "@/lib/server/env-schema";
 
-const serverEnvSchema = z.object({
-  SUPABASE_URL: z.string().url(),
-  SUPABASE_SERVICE_ROLE_KEY: z.string().min(20),
-  SESSION_COOKIE_SECRET: z.string().min(32),
-});
-
-export function getServerEnv() {
-  return serverEnvSchema.parse({
-    SUPABASE_URL: process.env.SUPABASE_URL,
-    SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY,
-    SESSION_COOKIE_SECRET: process.env.SESSION_COOKIE_SECRET,
-  });
+let cached: ServerEnv | undefined;
+export function getServerEnv(): ServerEnv {
+  cached ??= serverEnvSchema.parse(process.env);
+  return cached;
 }

@@ -2,6 +2,10 @@
 
 Canonical Markdown handoffs for the Kempape MVP.
 
+## Implementation
+
+- [Handoff 01 — Foundation and authentication](implementation/HANDOFF_01_FOUNDATION_AUTH.md)
+
 ## Architecture freeze
 
 - [Repository audit](architecture/00_REPOSITORY_AUDIT.md)
