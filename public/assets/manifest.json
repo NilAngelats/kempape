@@ -3,6 +3,27 @@
   "characters": {},
   "faces": {},
   "ui": {},
+  "actions": {
+    "smoke_cigarette":{"displayName":"Smoke a Cigarette","path":"/assets/actions/Smoke a Cigarette.png","mime":"image/png","width":1254,"height":1254},
+    "drink_beer":{"displayName":"Drink a Beer","path":"/assets/actions/Drink a Beer.png","mime":"image/png","width":1254,"height":1254},
+    "drink_strong_mixed_drink":{"displayName":"Drink a Strong Mixed Drink","path":"/assets/actions/Drink a Strong Mixed Drink.png","mime":"image/png","width":1254,"height":1254},
+    "take_shot":{"displayName":"Take a Shot","path":"/assets/actions/Take a Shot.png","mime":"image/png","width":1254,"height":1254},
+    "take_jagermeister_shot":{"displayName":"Take a Jägermeister Shot","path":"/assets/actions/Take  a Jägermeister Shot.png","mime":"image/png","width":1254,"height":1254},
+    "smoke_joint":{"displayName":"Smoke a Joint","path":"/assets/actions/Smoke a Joint.png","mime":"image/png","width":1254,"height":1254},
+    "finish_your_drink":{"displayName":"Finish Your Drink","path":"/assets/actions/Finish your drink.png","mime":"image/png","width":1254,"height":1254},
+    "extreme_challenge":{"displayName":"Extreme Challenge","path":"/assets/actions/Extreme challenge.png","mime":"image/png","width":1254,"height":1254},
+    "push_ups_20":{"displayName":"20 Push-ups","path":"/assets/actions/20 Push-ups.png","mime":"image/png","width":1254,"height":1254},
+    "squats_40":{"displayName":"40 Squats","path":"/assets/actions/40 Squats.png","mime":"image/png","width":1254,"height":1254},
+    "cold_shower":{"displayName":"Cold Shower","path":"/assets/actions/Cold shower.png","mime":"image/png","width":1254,"height":1254},
+    "pay_for_shower":{"displayName":"Pay for a Shower","path":"/assets/actions/Pay for a Shower.png","mime":"image/png","width":1254,"height":1254},
+    "find_someone_you_know":{"displayName":"Find Someone You Know","path":"/assets/actions/Find someone you know.png","mime":"image/png","width":1254,"height":1254},
+    "talk_to_stranger_20_minutes":{"displayName":"Talk to a Stranger","path":"/assets/actions/Tolk to a stranger for 20+ Minutes.png","mime":"image/png","width":1254,"height":1254},
+    "find_catalan_people":{"displayName":"Find Catalan People","path":"/assets/actions/Find catalan people.png","mime":"image/png","width":1254,"height":1254},
+    "make_out_with_someone":{"displayName":"Make Out With Someone","path":"/assets/actions/Make out with someone.png","mime":"image/png","width":1254,"height":1254},
+    "have_sex_with_someone":{"displayName":"Have Sex With Someone","path":"/assets/actions/Have sex with someone.png","mime":"image/png","width":1254,"height":1254},
+    "get_permanent_tattoo":{"displayName":"Get a Permanent Tattoo","path":"/assets/actions/Get a permanen tattoo.png","mime":"image/png","width":1254,"height":1254},
+    "action_fallback":{"displayName":"Action artwork unavailable","path":"/assets/character-template.png","mime":"image/png","width":398,"height":655,"assignable":false}
+  },
   "templates": {
     "character_template": {
       "displayName": "Unassigned character template",
@@ -16,6 +37,7 @@
   "unresolved": [
     "Production character and face assets have not been supplied.",
     "Primary navigation assets nav_home, nav_actions, nav_store, nav_quests and nav_action_pool have no approved raster mappings; the shell uses code-native text symbols.",
-    "No approved logo or background asset is available."
+    "No approved logo or background asset is available.",
+    "Four festival-social Actions use the documented neutral fallback because artwork is missing."
   ]
 }

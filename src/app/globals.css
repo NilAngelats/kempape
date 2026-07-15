@@ -159,9 +159,11 @@ main {
 .bar.xp::-webkit-progress-value { background:var(--accent); }
 .bar::-moz-progress-bar { background:var(--success); border-radius:999px; }
 .bar.xp::-moz-progress-bar { background:var(--accent); }
+.action-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:.75rem}.action-card{display:grid;grid-template-columns:5.5rem 1fr;gap:1rem}.action-art{width:5.5rem;height:5.5rem;object-fit:cover;border-radius:.75rem;background:var(--panel-strong)}.action-card h3,.pool-card h3,.quest-title h3{margin:.4rem 0}.action-facts{display:flex;flex-wrap:wrap;gap:.4rem}.action-facts span{padding:.3rem .5rem;border-radius:.5rem;background:var(--panel-strong);font-size:.8rem}.pool-card,.quest-title{display:flex;justify-content:space-between;gap:1rem;align-items:center}.pool-actions{display:flex;gap:.5rem;flex-wrap:wrap}.command-control{display:grid;gap:.3rem}.button:disabled{opacity:.5;cursor:not-allowed}.button.danger{background:var(--danger);color:white}.badge.complete{color:var(--success);border-color:var(--success)}
 
 @media (max-width: 34rem) {
   main:not(.app-content) { padding: .8rem; }
   .metric-grid { grid-template-columns: 1fr; }
   .shell-stats { display:none; }
+  .action-card{grid-template-columns:4rem 1fr}.action-art{width:4rem;height:4rem}.pool-card,.quest-title{align-items:flex-start;flex-direction:column}.pool-actions,.pool-actions .command-control,.pool-actions button{width:100%}
 }

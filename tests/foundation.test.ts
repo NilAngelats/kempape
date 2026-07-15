@@ -3,7 +3,7 @@ import { formatInviteCode, generateSessionToken, keyedHash, normalizeInviteCode 
 import { expiredSessionCookieOptions, sessionCookieOptions } from "@/lib/auth/cookie";
 import { effectiveElapsedMs, getLifecycleStatus, lifecycleSnapshot, type RunLifecycleInput } from "@/lib/game/time";
 import { parseServerEnv } from "@/lib/server/env-schema";
-import { validateAssetRegistry } from "@/lib/assets/registry";
+import { assetManifest, validateAssetRegistry } from "@/lib/assets/registry";
 
 describe("invite credentials",()=>{
   it("normalizes approved separators and case",()=>expect(normalizeInviteCode("kmp-7h9q x4md-p8tr-abc2")).toBe("KMP7H9QX4MDP8TRABC2"));
@@ -28,5 +28,5 @@ describe("festival lifecycle",()=>{
 
 describe("configuration and assets",()=>{
   it("validates environment without exposing client secrets",()=>expect(parseServerEnv({NODE_ENV:"test",APP_URL:"http://localhost:3000",SUPABASE_URL:"http://localhost:54321",SUPABASE_SERVICE_ROLE_KEY:"s".repeat(20),INVITE_CODE_HASH_SECRET:"i".repeat(32),SESSION_TOKEN_HASH_SECRET:"t".repeat(32),RATE_LIMIT_HASH_SECRET:"r".repeat(32)}).success).toBe(true));
-  it("validates existing registry paths",()=>expect(validateAssetRegistry(new Set(["/assets/character-template.png"]))).toEqual([]));
+  it("validates existing registry paths",()=>{const paths=new Set(Object.values(assetManifest).flatMap(section=>Array.isArray(section)?[]:typeof section==="object"?Object.values(section).map(asset=>typeof asset==="object"&&asset&&"path" in asset?asset.path:""):[]));expect(validateAssetRegistry(paths)).toEqual([])});
 });
