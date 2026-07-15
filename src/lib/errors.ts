@@ -8,6 +8,7 @@ export type AppErrorCode =
   | "CONSECUTIVE_VALIDATOR_BLOCKED" | "SUBMISSION_NOT_FOUND" | "SUBMISSION_EXPIRED"
   | "SUBMISSION_ALREADY_PROCESSED" | "IDEMPOTENCY_CONFLICT" | "INFRASTRUCTURE";
 
+
 export class AppError extends Error {
   constructor(public readonly code: AppErrorCode, message: string, public readonly status: number) { super(message); }
 }
@@ -34,6 +35,15 @@ const domainErrors: Record<string, [AppErrorCode, string, number]> = {
   SUBMISSION_EXPIRED: ["SUBMISSION_EXPIRED", "The Action submission has expired.", 410],
   SUBMISSION_ALREADY_PROCESSED: ["SUBMISSION_ALREADY_PROCESSED", "The Action submission was already processed.", 409],
   IDEMPOTENCY_CONFLICT: ["IDEMPOTENCY_CONFLICT", "This command key was already used for a different request.", 409],
+  ITEM_NOT_FOUND: ["VALIDATION", "The selected item does not exist.", 400],
+  ITEM_NOT_OWNED: ["FORBIDDEN", "You do not own that item.", 403],
+  ITEM_NOT_EQUIPPED: ["VALIDATION", "That item is not equipped.", 409],
+  ITEM_ALREADY_EQUIPPED: ["VALIDATION", "That item is already equipped.", 409],
+  SLOT_OCCUPIED: ["VALIDATION", "Replace the currently equipped item in this slot.", 409],
+  REPLACEMENT_MISMATCH: ["VALIDATION", "The replacement selection is stale.", 409],
+  EQUIPMENT_COOLDOWN_ACTIVE: ["COOLDOWN_ACTIVE", "That Equipment copy is still on cooldown.", 409],
+  EQUIPMENT_SUPPLY_EXHAUSTED: ["ACTION_UNAVAILABLE", "That Equipment item is no longer available.", 409],
+  STACK_LIMIT_REACHED: ["ACTION_UNAVAILABLE", "That item stack is already full.", 409],
 };
 
 export function mapDatabaseError(error: unknown): AppError {

@@ -160,7 +160,7 @@ Special Set A gives each rarity its own identity.
 | --------- | -------------- | ------------------------------------------------------------- |
 | Common    | Dodge Set      | Chance to ignore incoming player damage                       |
 | Rare      | Protection Set | Reduces incoming player damage                                |
-| Epic      | Gold Set       | Generates coins every hour                                    |
+| Epic      | Gold Set       | Generates coins every two effective hours                     |
 | Legendary | Thorns Set     | Reflects part of incoming damage and reduces that same amount |
 
 ---
@@ -219,21 +219,21 @@ Final damage = 40
 
 ## Epic Special A — Gold Set
 
-Gold Set generates coins every hour.
+Gold Set generates coins every completed two-hour effective interval.
 
 This only works while equipped.
 
-| Piece          | Coins per hour |
-| -------------- | -------------: |
-| Helmet         |      +1 coin/h |
-| Boots          |      +1 coin/h |
-| Legs           |     +2 coins/h |
-| Armor          |     +3 coins/h |
-| Piece total    |     +7 coins/h |
-| Full set bonus |     +3 coins/h |
-| Full set total |    +10 coins/h |
+| Piece          | Coins per two-hour interval |
+| -------------- | --------------------------: |
+| Helmet         |                           +1 |
+| Boots          |                           +1 |
+| Legs           |                           +2 |
+| Armor          |                           +3 |
+| Piece total    |                           +7 |
+| Full set bonus |                           +1 |
+| Full set total |                           +8 |
 
-Gold generation should be reviewed later once chest prices are finalized.
+There is no daily generation cap. Offline and Hospital time count; global-pause and Chaos-lock time do not.
 
 ---
 

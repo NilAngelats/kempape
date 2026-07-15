@@ -27,12 +27,12 @@ export const ECONOMY_CONFIG = {
     milestone: 15,
   },
   gold: {
-    intervalMinutes: 60,
+    intervalMinutes: 120,
     helmet: 1,
     boots: 1,
     legs: 2,
     armor: 3,
-    fullSetBonus: 3,
+    fullSetBonus: 1,
   },
   chestOverflow: {
     perReward: {

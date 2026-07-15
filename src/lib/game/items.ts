@@ -37,20 +37,36 @@ export type EquipmentDefinition = {
   slot: EquipmentSlot;
   setKey: string;
   globalCopyLimit: number | null;
+  effectKind: "regeneration"|"damage"|"dodge"|"potion"|"protection"|"hospital"|"gold"|"chest"|"thorns"|"phoenix";
+  effectValue: number;
+  fullSetBonus: number;
+  intervalSeconds: number | null;
+  imageKey: string;
 };
+
+const pieceValues:Record<string,Record<EquipmentSlot,number>>={
+  common_regeneration:{helmet:1,boots:1,legs:1,armor:2},rare_regeneration:{helmet:1,boots:1,legs:2,armor:3},epic_regeneration:{helmet:2,boots:2,legs:3,armor:4},legendary_regeneration:{helmet:3,boots:3,legs:4,armor:6},
+  common_damage:{helmet:100,boots:100,legs:100,armor:200},rare_damage:{helmet:100,boots:100,legs:200,armor:300},epic_damage:{helmet:200,boots:200,legs:300,armor:500},legendary_damage:{helmet:300,boots:300,legs:500,armor:800},
+  common_dodge:{helmet:100,boots:100,legs:200,armor:300},common_potion:{helmet:100,boots:100,legs:300,armor:500},rare_protection:{helmet:200,boots:200,legs:400,armor:600},rare_hospital:{helmet:4,boots:4,legs:8,armor:12},
+  epic_gold:{helmet:1,boots:1,legs:2,armor:3},epic_chest:{helmet:200,boots:200,legs:600,armor:1000},legendary_thorns:{helmet:200,boots:200,legs:400,armor:600},legendary_phoenix:{helmet:1000,boots:1000,legs:2500,armor:5000},
+};
+const fullBonuses:Record<string,number>={common_regeneration:1,rare_regeneration:2,epic_regeneration:3,legendary_regeneration:4,common_damage:0,rare_damage:300,epic_damage:300,legendary_damage:600,common_dodge:300,common_potion:500,rare_protection:600,rare_hospital:2,epic_gold:1,epic_chest:500,legendary_thorns:600,legendary_phoenix:500};
 
 export const EQUIPMENT_DEFINITIONS: readonly EquipmentDefinition[] = (
   Object.entries(setNames) as [Rarity, readonly string[]][]
 ).flatMap(([rarity, sets]) =>
   sets.flatMap((setKey) =>
-    slots.map((slot) => ({
+    slots.map((slot) => {const identity=`${rarity}_${setKey}`;return ({
       id: `${rarity}_${setKey}_${slot}`,
       name: `${rarity[0].toUpperCase()}${rarity.slice(1)} ${setKey[0].toUpperCase()}${setKey.slice(1)} ${slot[0].toUpperCase()}${slot.slice(1)}`,
       rarity,
       slot,
-      setKey,
+      setKey:identity,
       globalCopyLimit:
         rarity === "epic" ? 4 : rarity === "legendary" ? 1 : null,
-    })),
+      effectKind:setKey as EquipmentDefinition["effectKind"],effectValue:pieceValues[identity][slot],fullSetBonus:fullBonuses[identity],intervalSeconds:setKey==="regeneration"?3600:setKey==="gold"?7200:null,imageKey:`${rarity}_${setKey}_${slot}`,
+    })}),
   ),
 );
+
+export const EQUIPMENT_EFFECT_UNITS={regeneration:"hp",damage:"basis_points",dodge:"basis_points",potion:"basis_points",protection:"basis_points",hospital:"minutes",gold:"coins",chest:"basis_points",thorns:"basis_points",phoenix:"basis_points"}as const;

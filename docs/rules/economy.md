@@ -201,25 +201,25 @@ Use the existing `claimedLevelRewards` system.
 
 Gold equipment passively generates coins.
 
-Gold is generated every hour while the equipment remains continuously equipped.
+Gold is generated every completed two-hour effective interval while the equipment remains continuously equipped.
 
 ## Piece Generation
 
-| Equipped piece     | Coins every hour | Maximum over 24 continuous hours |
+| Equipped piece     | Coins every 2 hours | Maximum over 24 continuous hours |
 | ------------------ | ---------------: | -------------------------------: |
 | Helmet             |                1 |                               24 |
 | Boots              |                1 |                               24 |
 | Legs               |                2 |                               48 |
 | Armor              |                3 |                               72 |
 | Piece total        |                7 |                              168 |
-| Full-set bonus     |               +3 |                              +72 |
-| **Full-set total** |           **10** |                          **240** |
+| Full-set bonus     |               +1 |                              +12 |
+| **Full-set total** |            **8** |                           **96** |
 
 Formula:
 
 ```text
 Full Gold Set:
-10 coins every hour
+8 coins every two hours
 ```
 
 There is no daily generation cap.
@@ -235,13 +235,13 @@ Gold continues accumulating:
 
 Gold does not accumulate while the player is Chaos-locked or while the whole game run is paused.
 
-Partial hourly progress is preserved and resumes from the same point after unlocking or resuming.
+Partial two-hour progress is preserved and resumes from the same point after unlocking or resuming.
 
 A complete Gold Set generates:
 
 ```text
-10 coins per hour
-240 coins over 24 continuous hours
+8 coins every two hours
+96 coins over 24 continuous hours
 ```
 
 At the current chest prices, this is enough to purchase one Big Chest with 40 coins remaining.
@@ -264,12 +264,12 @@ coinsGenerated =
 completedIntervals × itemHourlyPayout
 ```
 
-Coins should be granted automatically whenever a complete hourly interval finishes.
+Coins should be granted automatically whenever a complete two-hour interval finishes.
 
 When a Gold item is unequipped:
 
-1. Grant coins for any completed hourly intervals not already processed.
-2. Discard incomplete hourly progress.
+1. Grant coins for any completed two-hour intervals not already processed.
+2. Discard incomplete interval progress.
 3. Reset that item’s timer.
 
 Example:
@@ -301,13 +301,13 @@ Armor first payout: 11:30.
 
 ## Full-Set Bonus Timer
 
-The additional `+3 coins per hour` uses a separate full-set timer.
+The additional `+1 coin per two-hour interval` uses a separate full-set timer.
 
 The timer begins when all four Gold pieces are equipped simultaneously.
 
 If any Gold piece is removed:
 
-1. Grant any completed full-set hourly intervals not already processed.
+1. Grant any completed full-set two-hour intervals not already processed.
 2. Discard the unfinished full-set interval.
 3. Reset the full-set timer.
 
@@ -322,16 +322,16 @@ Bonus reward = 3 × 3 coins = 9 coins.
 The remaining 20 minutes are discarded if any piece is removed.
 ```
 
-The complete hourly payout is:
+The complete two-hour payout is:
 
 ```text
 Helmet: 1 coin
 Boots: 1 coin
 Legs: 2 coins
 Armor: 3 coins
-Full-set bonus: 3 coins
+Full-set bonus: 1 coin
 
-Total: 10 coins per hour
+Total: 8 coins every two hours
 ```
 
 ---
@@ -340,14 +340,14 @@ Total: 10 coins per hour
 
 | Rule                                  |               Decision |
 | ------------------------------------- | ---------------------: |
-| Generation interval                   |             Every hour |
+| Generation interval                   |         Every 2 hours |
 | Helmet generation                     |            1 coin/hour |
 | Boots generation                      |            1 coin/hour |
 | Legs generation                       |           2 coins/hour |
 | Armor generation                      |           3 coins/hour |
-| Full-set bonus                        |           3 coins/hour |
-| Full-set total                        |          10 coins/hour |
-| Maximum theoretical output            | 240 coins per 24 hours |
+| Full-set bonus                        |     1 coin / 2 hours |
+| Full-set total                        |    8 coins / 2 hours |
+| Maximum theoretical output            | 96 coins per 24 hours |
 | Daily cap                             |                   None |
 | Offline generation                    |                    Yes |
 | Hospital generation                   |                    Yes |
@@ -642,14 +642,14 @@ dailyQuestCounts: {
     milestone: 15,
   },
 
-  goldGenerationIntervalMinutes: 60,
+  goldGenerationIntervalMinutes: 120,
 
 goldGeneration: {
   helmet: 1,
   boots: 1,
   legs: 2,
   armor: 3,
-  fullSetBonus: 3,
+  fullSetBonus: 1,
 },
 
   overflowRefundRate: 0.50,

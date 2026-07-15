@@ -13,6 +13,7 @@
     "lifecycle:dev": "node --env-file=.env.local scripts/set-dev-lifecycle.mjs",
     "actions:seed-dev": "node --env-file=.env.local scripts/seed-actions-dev.mjs",
     "actions:runtime-acceptance": "node --env-file=.env.local scripts/actions-runtime-acceptance.mjs",
+    "inventory:grant-dev": "node --env-file=.env.local scripts/grant-inventory-dev.mjs",
     "check": "npm run typecheck && npm run test && npm run build"
   },
   "dependencies": {

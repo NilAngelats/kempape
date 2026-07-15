@@ -72,7 +72,7 @@ describe("definition integrity", () => {
 });
 
 describe("economy", () => {
-  it("generates 10 coins per hour with the full Gold Set", () => {
+  it("generates 8 coins per completed two-hour interval with the full Gold Set", () => {
     const gold = ECONOMY_CONFIG.gold;
     expect(
       gold.helmet
@@ -80,7 +80,7 @@ describe("economy", () => {
         + gold.legs
         + gold.armor
         + gold.fullSetBonus,
-    ).toBe(10);
+    ).toBe(8);
   });
 
   it("grants 200 Daily Quest coins per cycle", () => {
