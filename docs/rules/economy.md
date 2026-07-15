@@ -207,11 +207,11 @@ Gold is generated every completed two-hour effective interval while the equipmen
 
 | Equipped piece     | Coins every 2 hours | Maximum over 24 continuous hours |
 | ------------------ | ---------------: | -------------------------------: |
-| Helmet             |                1 |                               24 |
-| Boots              |                1 |                               24 |
-| Legs               |                2 |                               48 |
-| Armor              |                3 |                               72 |
-| Piece total        |                7 |                              168 |
+| Helmet             |                1 |                               12 |
+| Boots              |                1 |                               12 |
+| Legs               |                2 |                               24 |
+| Armor              |                3 |                               36 |
+| Piece total        |                7 |                               84 |
 | Full-set bonus     |               +1 |                              +12 |
 | **Full-set total** |            **8** |                           **96** |
 
@@ -254,14 +254,14 @@ The full set is intentionally powerful because the player must equip all four Go
 
 Each equipped Gold item has its own continuous equipment timer.
 
-A payout requires the item to remain equipped for one complete hour.
+A payout requires the item to remain equipped for one complete two-hour effective interval.
 
 ```text
 completedIntervals =
-floor(continuousEquippedTime ÷ 1 hour)
+floor(continuousEffectiveEquippedTime ÷ 2 hours)
 
 coinsGenerated =
-completedIntervals × itemHourlyPayout
+completedIntervals × itemIntervalPayout
 ```
 
 Coins should be granted automatically whenever a complete two-hour interval finishes.
@@ -277,8 +277,8 @@ Example:
 ```text
 Gold Armor has been equipped for 5 hours and 40 minutes.
 
-5 complete intervals have passed.
-Reward = 5 × 3 coins = 15 coins.
+2 complete intervals have passed.
+Reward = 2 × 3 coins = 6 coins.
 
 The remaining 40 minutes do not produce coins.
 ```
@@ -293,8 +293,8 @@ Example:
 Helmet equipped at 10:00.
 Armor equipped at 10:30.
 
-Helmet first payout: 11:00.
-Armor first payout: 11:30.
+Helmet first payout: 12:00.
+Armor first payout: 12:30.
 ```
 
 ---
@@ -316,8 +316,8 @@ Example:
 ```text
 All four Gold pieces have been equipped together for 3 hours and 20 minutes.
 
-3 full-set intervals have passed.
-Bonus reward = 3 × 3 coins = 9 coins.
+1 full-set interval has passed.
+Bonus reward = 1 × 1 coin = 1 coin.
 
 The remaining 20 minutes are discarded if any piece is removed.
 ```
@@ -341,10 +341,10 @@ Total: 8 coins every two hours
 | Rule                                  |               Decision |
 | ------------------------------------- | ---------------------: |
 | Generation interval                   |         Every 2 hours |
-| Helmet generation                     |            1 coin/hour |
-| Boots generation                      |            1 coin/hour |
-| Legs generation                       |           2 coins/hour |
-| Armor generation                      |           3 coins/hour |
+| Helmet generation                     |       1 coin / 2 hours |
+| Boots generation                      |       1 coin / 2 hours |
+| Legs generation                       |      2 coins / 2 hours |
+| Armor generation                      |      3 coins / 2 hours |
 | Full-set bonus                        |     1 coin / 2 hours |
 | Full-set total                        |    8 coins / 2 hours |
 | Maximum theoretical output            | 96 coins per 24 hours |
@@ -582,7 +582,7 @@ Approximately 13–17 mixed chests
 | Actions       |           650–750 |
 | Daily Quests  |               180 |
 | Level rewards |             60–75 |
-| Full Gold Set |               240 |
+| Full Gold Set |                96 |
 | **Total**     |   **1,150–1,265** |
 
 Expected chest purchases:

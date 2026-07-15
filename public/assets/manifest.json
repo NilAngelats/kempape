@@ -4,25 +4,140 @@
   "faces": {},
   "ui": {},
   "actions": {
-    "smoke_cigarette":{"displayName":"Smoke a Cigarette","path":"/assets/actions/Smoke a Cigarette.png","mime":"image/png","width":1254,"height":1254},
-    "drink_beer":{"displayName":"Drink a Beer","path":"/assets/actions/Drink a Beer.png","mime":"image/png","width":1254,"height":1254},
-    "drink_strong_mixed_drink":{"displayName":"Drink a Strong Mixed Drink","path":"/assets/actions/Drink a Strong Mixed Drink.png","mime":"image/png","width":1254,"height":1254},
-    "take_shot":{"displayName":"Take a Shot","path":"/assets/actions/Take a Shot.png","mime":"image/png","width":1254,"height":1254},
-    "take_jagermeister_shot":{"displayName":"Take a Jägermeister Shot","path":"/assets/actions/Take  a Jägermeister Shot.png","mime":"image/png","width":1254,"height":1254},
-    "smoke_joint":{"displayName":"Smoke a Joint","path":"/assets/actions/Smoke a Joint.png","mime":"image/png","width":1254,"height":1254},
-    "finish_your_drink":{"displayName":"Finish Your Drink","path":"/assets/actions/Finish your drink.png","mime":"image/png","width":1254,"height":1254},
-    "extreme_challenge":{"displayName":"Extreme Challenge","path":"/assets/actions/Extreme challenge.png","mime":"image/png","width":1254,"height":1254},
-    "push_ups_20":{"displayName":"20 Push-ups","path":"/assets/actions/20 Push-ups.png","mime":"image/png","width":1254,"height":1254},
-    "squats_40":{"displayName":"40 Squats","path":"/assets/actions/40 Squats.png","mime":"image/png","width":1254,"height":1254},
-    "cold_shower":{"displayName":"Cold Shower","path":"/assets/actions/Cold shower.png","mime":"image/png","width":1254,"height":1254},
-    "pay_for_shower":{"displayName":"Pay for a Shower","path":"/assets/actions/Pay for a Shower.png","mime":"image/png","width":1254,"height":1254},
-    "find_someone_you_know":{"displayName":"Find Someone You Know","path":"/assets/actions/Find someone you know.png","mime":"image/png","width":1254,"height":1254},
-    "talk_to_stranger_20_minutes":{"displayName":"Talk to a Stranger","path":"/assets/actions/Tolk to a stranger for 20+ Minutes.png","mime":"image/png","width":1254,"height":1254},
-    "find_catalan_people":{"displayName":"Find Catalan People","path":"/assets/actions/Find catalan people.png","mime":"image/png","width":1254,"height":1254},
-    "make_out_with_someone":{"displayName":"Make Out With Someone","path":"/assets/actions/Make out with someone.png","mime":"image/png","width":1254,"height":1254},
-    "have_sex_with_someone":{"displayName":"Have Sex With Someone","path":"/assets/actions/Have sex with someone.png","mime":"image/png","width":1254,"height":1254},
-    "get_permanent_tattoo":{"displayName":"Get a Permanent Tattoo","path":"/assets/actions/Get a permanen tattoo.png","mime":"image/png","width":1254,"height":1254},
-    "action_fallback":{"displayName":"Action artwork unavailable","path":"/assets/character-template.png","mime":"image/png","width":398,"height":655,"assignable":false}
+    "smoke_cigarette": {
+      "displayName": "Smoke a Cigarette",
+      "path": "/assets/actions/Smoke a Cigarette.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "drink_beer": {
+      "displayName": "Drink a Beer",
+      "path": "/assets/actions/Drink a Beer.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "drink_strong_mixed_drink": {
+      "displayName": "Drink a Strong Mixed Drink",
+      "path": "/assets/actions/Drink a Strong Mixed Drink.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "take_shot": {
+      "displayName": "Take a Shot",
+      "path": "/assets/actions/Take a Shot.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "take_jagermeister_shot": {
+      "displayName": "Take a Jägermeister Shot",
+      "path": "/assets/actions/Take  a Jägermeister Shot.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "smoke_joint": {
+      "displayName": "Smoke a Joint",
+      "path": "/assets/actions/Smoke a Joint.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "finish_your_drink": {
+      "displayName": "Finish Your Drink",
+      "path": "/assets/actions/Finish your drink.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "extreme_challenge": {
+      "displayName": "Extreme Challenge",
+      "path": "/assets/actions/Extreme challenge.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "push_ups_20": {
+      "displayName": "20 Push-ups",
+      "path": "/assets/actions/20 Push-ups.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "squats_40": {
+      "displayName": "40 Squats",
+      "path": "/assets/actions/40 Squats.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "cold_shower": {
+      "displayName": "Cold Shower",
+      "path": "/assets/actions/Cold shower.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "pay_for_shower": {
+      "displayName": "Pay for a Shower",
+      "path": "/assets/actions/Pay for a Shower.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "find_someone_you_know": {
+      "displayName": "Find Someone You Know",
+      "path": "/assets/actions/Find someone you know.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "talk_to_stranger_20_minutes": {
+      "displayName": "Talk to a Stranger",
+      "path": "/assets/actions/Tolk to a stranger for 20+ Minutes.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "find_catalan_people": {
+      "displayName": "Find Catalan People",
+      "path": "/assets/actions/Find catalan people.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "make_out_with_someone": {
+      "displayName": "Make Out With Someone",
+      "path": "/assets/actions/Make out with someone.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "have_sex_with_someone": {
+      "displayName": "Have Sex With Someone",
+      "path": "/assets/actions/Have sex with someone.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "get_permanent_tattoo": {
+      "displayName": "Get a Permanent Tattoo",
+      "path": "/assets/actions/Get a permanen tattoo.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "action_fallback": {
+      "displayName": "Action artwork unavailable",
+      "path": "/assets/character-template.png",
+      "mime": "image/png",
+      "width": 398,
+      "height": 655,
+      "assignable": false
+    }
   },
   "templates": {
     "character_template": {
@@ -39,5 +154,557 @@
     "Primary navigation assets nav_home, nav_actions, nav_store, nav_quests and nav_action_pool have no approved raster mappings; the shell uses code-native text symbols.",
     "No approved logo or background asset is available.",
     "Four festival-social Actions use the documented neutral fallback because artwork is missing."
-  ]
+  ],
+  "equipment": {
+    "epic_chest_armor": {
+      "displayName": "epic chest armor",
+      "path": "/assets/equipment/chest/chest-armor-epic.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "epic_chest_boots": {
+      "displayName": "epic chest boots",
+      "path": "/assets/equipment/chest/chest-boots-epic.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "epic_chest_helmet": {
+      "displayName": "epic chest helmet",
+      "path": "/assets/equipment/chest/chest-helmet-epic.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "epic_chest_legs": {
+      "displayName": "epic chest legs",
+      "path": "/assets/equipment/chest/chest-legs-epic.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "common_dodge_armor": {
+      "displayName": "common dodge armor",
+      "path": "/assets/equipment/dodge/dodge-common-armor.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "common_dodge_boots": {
+      "displayName": "common dodge boots",
+      "path": "/assets/equipment/dodge/dodge-common-boots.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "common_dodge_helmet": {
+      "displayName": "common dodge helmet",
+      "path": "/assets/equipment/dodge/dodge-common-helmet.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "common_dodge_legs": {
+      "displayName": "common dodge legs",
+      "path": "/assets/equipment/dodge/dodge-common-legs.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "epic_gold_armor": {
+      "displayName": "epic gold armor",
+      "path": "/assets/equipment/gold/gold-epic-armor.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "epic_gold_boots": {
+      "displayName": "epic gold boots",
+      "path": "/assets/equipment/gold/gold-epic-boots.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "epic_gold_helmet": {
+      "displayName": "epic gold helmet",
+      "path": "/assets/equipment/gold/gold-epic-helmet.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "epic_gold_legs": {
+      "displayName": "epic gold legs",
+      "path": "/assets/equipment/gold/gold-epic-legs.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "rare_hospital_armor": {
+      "displayName": "rare hospital armor",
+      "path": "/assets/equipment/hospital/hospital-rare-armor.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "rare_hospital_boots": {
+      "displayName": "rare hospital boots",
+      "path": "/assets/equipment/hospital/hospital-rare-boots.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "rare_hospital_helmet": {
+      "displayName": "rare hospital helmet",
+      "path": "/assets/equipment/hospital/hospital-rare-helmet.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "rare_hospital_legs": {
+      "displayName": "rare hospital legs",
+      "path": "/assets/equipment/hospital/hospital-rare-legs.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "legendary_phoenix_armor": {
+      "displayName": "legendary phoenix armor",
+      "path": "/assets/equipment/phoenix/phoenix-legendary-armor.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "legendary_phoenix_boots": {
+      "displayName": "legendary phoenix boots",
+      "path": "/assets/equipment/phoenix/phoenix-legendary-boots.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "legendary_phoenix_helmet": {
+      "displayName": "legendary phoenix helmet",
+      "path": "/assets/equipment/phoenix/phoenix-legendary-helmet.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "legendary_phoenix_legs": {
+      "displayName": "legendary phoenix legs",
+      "path": "/assets/equipment/phoenix/phoenix-legendary-legs.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "common_potion_armor": {
+      "displayName": "common potion armor",
+      "path": "/assets/equipment/potion/potion-common-armor.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "common_potion_boots": {
+      "displayName": "common potion boots",
+      "path": "/assets/equipment/potion/potion-common-boots.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "common_potion_helmet": {
+      "displayName": "common potion helmet",
+      "path": "/assets/equipment/potion/potion-common-helmet.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "common_potion_legs": {
+      "displayName": "common potion legs",
+      "path": "/assets/equipment/potion/potion-common-legs.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "rare_protection_armor": {
+      "displayName": "rare protection armor",
+      "path": "/assets/equipment/protection/protection-rare-armor.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "rare_protection_boots": {
+      "displayName": "rare protection boots",
+      "path": "/assets/equipment/protection/protection-rare-boots.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "rare_protection_helmet": {
+      "displayName": "rare protection helmet",
+      "path": "/assets/equipment/protection/protection-rare-helmet.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "rare_protection_legs": {
+      "displayName": "rare protection legs",
+      "path": "/assets/equipment/protection/protection-rare-legs.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "legendary_thorns_armor": {
+      "displayName": "legendary thorns armor",
+      "path": "/assets/equipment/thorns/thorns-legendary-armor.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "legendary_thorns_boots": {
+      "displayName": "legendary thorns boots",
+      "path": "/assets/equipment/thorns/thorns-legendary-boots.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "legendary_thorns_helmet": {
+      "displayName": "legendary thorns helmet",
+      "path": "/assets/equipment/thorns/thorns-legendary-helmet.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "legendary_thorns_legs": {
+      "displayName": "legendary thorns legs",
+      "path": "/assets/equipment/thorns/thorns-legendary-legs.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "common_damage_armor": {
+      "displayName": "common damage armor",
+      "path": "/assets/equipment/damage/common/damage-armor-common.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "common_damage_boots": {
+      "displayName": "common damage boots",
+      "path": "/assets/equipment/damage/common/damage-boots-common.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "common_damage_helmet": {
+      "displayName": "common damage helmet",
+      "path": "/assets/equipment/damage/common/damage-helmet-common.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "common_damage_legs": {
+      "displayName": "common damage legs",
+      "path": "/assets/equipment/damage/common/damage-legs-common.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "epic_damage_armor": {
+      "displayName": "epic damage armor",
+      "path": "/assets/equipment/damage/epic/damage-epic-armor.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "epic_damage_boots": {
+      "displayName": "epic damage boots",
+      "path": "/assets/equipment/damage/epic/damage-epic-boots.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "epic_damage_helmet": {
+      "displayName": "epic damage helmet",
+      "path": "/assets/equipment/damage/epic/damage-epic-helmet.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "epic_damage_legs": {
+      "displayName": "epic damage legs",
+      "path": "/assets/equipment/damage/epic/damage-epic-legs.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "legendary_damage_armor": {
+      "displayName": "legendary damage armor",
+      "path": "/assets/equipment/damage/legendary/damage-legendary-armor.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "legendary_damage_boots": {
+      "displayName": "legendary damage boots",
+      "path": "/assets/equipment/damage/legendary/damage-legendary-boots.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "legendary_damage_helmet": {
+      "displayName": "legendary damage helmet",
+      "path": "/assets/equipment/damage/legendary/damage-legendary-helmet.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "legendary_damage_legs": {
+      "displayName": "legendary damage legs",
+      "path": "/assets/equipment/damage/legendary/damage-legendary-legs.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "rare_damage_helmet": {
+      "displayName": "rare damage helmet",
+      "path": "/assets/equipment/damage/rare/damage-helmet-rare.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "rare_damage_armor": {
+      "displayName": "rare damage armor",
+      "path": "/assets/equipment/damage/rare/damage-rare-armor.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "rare_damage_boots": {
+      "displayName": "rare damage boots",
+      "path": "/assets/equipment/damage/rare/damage-rare-boots.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "rare_damage_legs": {
+      "displayName": "rare damage legs",
+      "path": "/assets/equipment/damage/rare/damage-rare-legs.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "common_regeneration_armor": {
+      "displayName": "common regeneration armor",
+      "path": "/assets/equipment/regeneration/common/regeneration-common-armor.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "common_regeneration_boots": {
+      "displayName": "common regeneration boots",
+      "path": "/assets/equipment/regeneration/common/regeneration-common-boots.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "common_regeneration_helmet": {
+      "displayName": "common regeneration helmet",
+      "path": "/assets/equipment/regeneration/common/regeneration-common-helmet.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "common_regeneration_legs": {
+      "displayName": "common regeneration legs",
+      "path": "/assets/equipment/regeneration/common/regeneration-common-legs.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "epic_regeneration_armor": {
+      "displayName": "epic regeneration armor",
+      "path": "/assets/equipment/regeneration/epic/regeneration-epic-armor.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "epic_regeneration_boots": {
+      "displayName": "epic regeneration boots",
+      "path": "/assets/equipment/regeneration/epic/regeneration-epic-boots.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "epic_regeneration_helmet": {
+      "displayName": "epic regeneration helmet",
+      "path": "/assets/equipment/regeneration/epic/regeneration-epic-helmet.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "epic_regeneration_legs": {
+      "displayName": "epic regeneration legs",
+      "path": "/assets/equipment/regeneration/epic/regeneration-epic-legs.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "legendary_regeneration_armor": {
+      "displayName": "legendary regeneration armor",
+      "path": "/assets/equipment/regeneration/legendary/regeneration-legendary-armor.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "legendary_regeneration_boots": {
+      "displayName": "legendary regeneration boots",
+      "path": "/assets/equipment/regeneration/legendary/regeneration-legendary-boots.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "legendary_regeneration_helmet": {
+      "displayName": "legendary regeneration helmet",
+      "path": "/assets/equipment/regeneration/legendary/regeneration-legendary-helmet.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "legendary_regeneration_legs": {
+      "displayName": "legendary regeneration legs",
+      "path": "/assets/equipment/regeneration/legendary/regeneration-legendary-legs.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "rare_regeneration_armor": {
+      "displayName": "rare regeneration armor",
+      "path": "/assets/equipment/regeneration/rare/regeneration-rare-armor.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "rare_regeneration_boots": {
+      "displayName": "rare regeneration boots",
+      "path": "/assets/equipment/regeneration/rare/regeneration-rare-boots.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "rare_regeneration_helmet": {
+      "displayName": "rare regeneration helmet",
+      "path": "/assets/equipment/regeneration/rare/regeneration-rare-helmet.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "rare_regeneration_legs": {
+      "displayName": "rare regeneration legs",
+      "path": "/assets/equipment/regeneration/rare/regeneration-rare-legs.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    }
+  },
+  "consumables": {
+    "small_health_potion": {
+      "displayName": "small health potion",
+      "path": "/assets/consumables/Small Health Potion.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "xp_candy": {
+      "displayName": "xp candy",
+      "path": "/assets/consumables/XP Candy.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "big_health_potion": {
+      "displayName": "big health potion",
+      "path": "/assets/consumables/Big Health Potion.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "fortune_ticket": {
+      "displayName": "fortune ticket",
+      "path": "/assets/consumables/Fortune Ticket.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "experience_potion": {
+      "displayName": "experience potion",
+      "path": "/assets/consumables/Experience Potion.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "discharge_pill": {
+      "displayName": "discharge pill",
+      "path": "/assets/consumables/Discharge Pill.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "golden_hourglass": {
+      "displayName": "golden hourglass",
+      "path": "/assets/consumables/Golden Hourglass.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    }
+  },
+  "chaosCards": {
+    "smoke_cigarette": {
+      "displayName": "smoke cigarette",
+      "path": "/assets/chaos-cards/Smoke a Cigarette.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "double_sip": {
+      "displayName": "double sip",
+      "path": "/assets/chaos-cards/Double Sip.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "big_sip": {
+      "displayName": "big sip",
+      "path": "/assets/chaos-cards/Big Sip.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "shot": {
+      "displayName": "shot",
+      "path": "/assets/chaos-cards/Shot.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "jagermeister_shot": {
+      "displayName": "jagermeister shot",
+      "path": "/assets/chaos-cards/Jägermeister Shot.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "mirror": {
+      "displayName": "mirror",
+      "path": "/assets/chaos-cards/Mirror.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    },
+    "finish_your_drink": {
+      "displayName": "finish your drink",
+      "path": "/assets/chaos-cards/Finish your drink.png",
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254
+    }
+  }
 }

@@ -25,7 +25,7 @@ Chaos Card targeting/combat, Phoenix/Thorns/Dodge/Protection resolution and full
 
 Inventory is active-run scoped, service-role commanded and browser-denied with forced RLS. Equipment copies are independent instances with provenance and per-instance 15-minute cooldowns. A unique equipped-slot boundary prevents two equipped items in one slot. Stack rows are per run/player/category/definition and database-constrained to 0–10. Epic supply is four per definition/run and Legendary supply is one; reservation and ownership commit together.
 
-Effect projections use integer basis points for percentages. Regeneration uses independent one-hour item cursors and a separate full-set cursor. Gold uses independent two-hour cursors and a separate full-set cursor. Effective time excludes overlapping durable global pauses; Regeneration additionally excludes Hospital/Chaos-lock time, while Gold includes Hospital time and excludes Chaos-lock time. Completed intervals settle before equipment changes and incomplete progress is discarded when its source stops applying.
+Effect projections use integer basis points for percentages. Regeneration uses independent one-hour item cursors and a separate full-set cursor. Gold uses independent two-hour cursors and a separate full-set cursor. Each cursor stores its last wall-clock observation plus an effective-seconds remainder. On processing, clipped exclusions are unioned with `range_agg`; `remainder + max(0, wall elapsed - excluded union)` is divided into complete intervals and a new remainder. This prevents overlap double-subtraction and prevents excluded wall time from being counted again. Regeneration includes Hospital in the exclusion union; Gold does not. Durable Chaos-lock intervals remain a Handoff 5 input. Due cursors are indexed and selected by `(run, player, next_check_at, id)` with bounded `FOR UPDATE SKIP LOCKED` processing.
 
 Further schema, command, UI, tooling, validation and human-runbook details are maintained below as implementation lands.
 
@@ -35,13 +35,13 @@ Migration `0008_inventory_equipment_consumables.sql` adds the 64-row Equipment c
 
 Grant commands reserve Epic/Legendary supply and create ownership atomically. Common/Rare grants share the same provenance/idempotency contract without finite counters. Stack grants enforce 0–10 inside the transaction. Equipment mutation locks instance UUIDs in order, locks the slot uniqueness boundary and applies a 15-minute cooldown only after a successful state change. Replacement changes old/new items in one transaction.
 
-`use_inventory_consumable` implements Potion Set-adjusted 25/60 HP healing, 5/30 percent next-level XP grants through the core XP processor, durable Fortune entitlements and Golden Hourglass Action-cooldown reset. Discharge Pill is rejected from normal Inventory; its Hospital command remains a required follow-up before migration review.
+`use_inventory_consumable` implements Potion Set-adjusted 25/60 HP healing, 5/30 percent next-level XP grants through the core XP processor, durable Fortune entitlements and Golden Hourglass reset of only enabled, explicitly resettable, currently active Action cooldowns. Discharge Pill is rejected from normal Inventory. The protected `use_discharge_pill` command locks an active stay and pill stack, enforces one use per stay with a composite stay/run/player foreign key, subtracts exactly 20 minutes, and immediately releases at 75% Max HP when due.
 
 `process_passive_effects` is bounded, uses row locking and durable per-item/full-set cursors, excludes global pauses, excludes Hospital overlap for Regeneration, includes Hospital for Gold, advances full-HP Regeneration cursors and writes Gold through the coin ledger. Chaos-lock exclusion cannot be runtime-consumed until Handoff 5 introduces durable lock intervals; the projection/cursor contract is ready for that integration.
 
 ## UI and assets
 
-Inventory replaces its placeholder with Equipment, Consumables and Chaos Cards tabs, empty states, quantities, equipped state and atomic equip/unequip/replacement commands. Home displays four authoritative equipped slots. The repository has standalone art for all definitions, but this implementation has not yet expanded `manifest.json` with the 78 item mappings; UI therefore deliberately does not guess raw paths or fake character compositing.
+Inventory replaces its placeholder with Equipment, Consumables and Chaos Cards tabs, empty states, quantities, filters, inspection modals, cooldown-disabled controls and atomic equip/unequip/replacement/use commands. One idempotency key is retained across a failed request retry. Home and Inventory perform bounded passive catch-up before authoritative reads. The typed manifest maps all 64 Equipment, seven Consumables and seven Chaos Cards to verified existing files, and standalone artwork is rendered without inventing on-character compositing.
 
 ## Development grant tooling
 
@@ -53,7 +53,7 @@ Linked development additionally requires temporary `ALLOW_LINKED_INVENTORY_DEV_G
 
 ## Validation and human application
 
-Local validation: `npm run check`, `git diff --check`, script syntax and catalog/static migration tests. Linked dry run must show only migration 0008:
+Corrective-pass local validation passed: `npm run check` (100 tests plus production build), `git diff --check`, grant/runtime script syntax, and catalog/asset/migration invariant tests. Linked migration history showed 0001–0007 applied and the dry run showed only migration 0008:
 
 ```powershell
 npx supabase migration list --linked
@@ -71,7 +71,7 @@ npx supabase db lint --linked --level error --fail-on error
 ## Known limitations before acceptance
 
 - Migration 0008 has not been applied or PostgreSQL-runtime tested.
-- Complete item manifest registration and item artwork rendering remain unfinished.
-- Hospital Discharge Pill execution, complete passive settlement-before-unequip, and durable Chaos-lock pause overlap remain unfinished.
-- Runtime concurrency/RLS/supply/passive/consumable acceptance tooling remains to be added.
+- The guarded Inventory runtime script has only a non-mutating preflight; the required PostgreSQL mutation/concurrency matrix has not been executed and no runtime acceptance is claimed.
+- Durable Chaos-lock pause overlap cannot be consumed until Handoff 5 supplies the canonical interval source.
+- The Hospital route/RPC exists, but the dedicated Hospital countdown/button presentation remains part of the existing Hospital screen integration.
 - Final realtime subscriptions and on-character Equipment layers remain deferred as planned.

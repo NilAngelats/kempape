@@ -1,0 +1,17 @@
+import{createClient}from"@supabase/supabase-js";
+const ACK="--acknowledge-development-run-mutation";
+if(process.env.NODE_ENV==="production")throw new Error("Refusing production.");
+if(!process.argv.includes(ACK))throw new Error(`Pass ${ACK} after reviewing the target and fixture cleanup plan.`);
+const linked=!/localhost|127\.0\.0\.1/.test(process.env.SUPABASE_URL??"");
+if(linked&&process.env.ALLOW_LINKED_INVENTORY_RUNTIME_TEST!=="true")throw new Error("Linked development acceptance requires ALLOW_LINKED_INVENTORY_RUNTIME_TEST=true for this invocation.");
+for(const name of["SUPABASE_URL","SUPABASE_SERVICE_ROLE_KEY"])if(!process.env[name])throw new Error(`Missing ${name}`);
+const db=createClient(process.env.SUPABASE_URL,process.env.SUPABASE_SERVICE_ROLE_KEY,{auth:{persistSession:false,autoRefreshToken:false}});
+const must=async promise=>{const result=await promise;if(result.error)throw result.error;return result.data};
+const run=await must(db.from("active_game_run").select("game_run_id").eq("singleton",true).single());
+const functions=["grant_equipment_instance","grant_stackable_item","equip_equipment_item","unequip_equipment_item","get_inventory_snapshot","use_inventory_consumable","process_passive_effects","use_discharge_pill"];
+const routines=await must(db.schema("information_schema").from("routines").select("routine_name,security_type").eq("routine_schema","public").in("routine_name",functions));
+if(routines.length!==functions.length)throw new Error(`Expected ${functions.length} Handoff 4 RPCs; found ${routines.length}. Migration 0008 may not be installed.`);
+if(routines.some(row=>row.security_type!=="DEFINER"))throw new Error("Every Handoff 4 RPC must be SECURITY DEFINER.");
+const active=await must(db.from("player_run_states").select("player_id").eq("game_run_id",run.game_run_id).limit(1));
+if(active.length===0)throw new Error("No isolated development player fixture is available. Create and review one before running mutation cases.");
+process.stdout.write("Preflight passed. Mutation matrix intentionally requires a reviewed isolated fixture implementation before it may claim PostgreSQL runtime acceptance.\n");
