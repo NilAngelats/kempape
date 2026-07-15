@@ -71,7 +71,16 @@ npx supabase db lint --linked --level error --fail-on error
 ## Known limitations before acceptance
 
 - Migration 0008 has not been applied or PostgreSQL-runtime tested.
-- The guarded Inventory runtime script has only a non-mutating preflight; the required PostgreSQL mutation/concurrency matrix has not been executed and no runtime acceptance is claimed.
+- The guarded Inventory runtime script now creates isolated development fixtures and exercises browser/service privileges, concurrent stack caps, finite supply races, Equipment replacement/idempotency, concurrent passive processing, and committed Consumable state. The local Docker/Supabase stack was unavailable during the merge-gate pass, so the matrix remains unexecuted and no PostgreSQL runtime acceptance is claimed.
 - Durable Chaos-lock pause overlap cannot be consumed until Handoff 5 supplies the canonical interval source.
-- The Hospital route/RPC exists, but the dedicated Hospital countdown/button presentation remains part of the existing Hospital screen integration.
+- Full Hospital Equipment, combat/death integration, deferred damage and the complete Hospital lifecycle remain Handoff 5. Handoff 4 now provides the minimum authoritative Hospital countdown, pill quantity/used state and idempotent Discharge Pill control.
+
+## Final merge-gate corrections
+
+- Replacement settles completed item/full-set intervals and then deletes both the stopped item cursor and the old passive set cursor before the new slot state is installed. This resets partial full-set progress even for Gold-to-Gold or Regeneration-to-Regeneration same-set replacement; the refresh helper creates any newly complete set cursor from the replacement timestamp.
+- `getCurrentAppState` centralizes lifecycle/bootstrap loading, bounded passive catch-up and authoritative bootstrap reload. React request caching lets the persistent App shell and child pages share the post-processing HP/coin state.
+- Inventory snapshots include authoritative HP, Max HP, level, status and eligible Hourglass cooldown count. The UI explains advisory disabled states while SQL revalidates every command.
+- Equipment effects and full-set bonuses share one basis-point/time-unit formatter. Cooldowns derive from database `serverNow` plus monotonic client elapsed time and update every second.
+- Inventory and Hospital requests retain their idempotency key after uncertain network/JSON outcomes, always release the pending state, and clear the key after success or explicit conflict.
+- Home renders typed-registry standalone Equipment art and explicit empty slots. No on-character compositing is attempted.
 - Final realtime subscriptions and on-character Equipment layers remain deferred as planned.
