@@ -43,6 +43,7 @@ main {
 .text-button { border:0; background:transparent; color:var(--muted); padding:.5rem; cursor:pointer; }
 .app-frame { width:min(100%,48rem); min-height:100dvh; margin:auto; padding-bottom:calc(5rem + env(safe-area-inset-bottom)); }
 .topbar { position:sticky; top:0; z-index:10; display:flex; justify-content:space-between; align-items:center; padding:calc(.8rem + env(safe-area-inset-top)) 1rem .8rem; background:rgba(21,17,15,.92); border-bottom:1px solid var(--border); backdrop-filter:blur(12px); }
+.shell-stats { display:flex; gap:.55rem; color:var(--muted); font-size:.72rem; font-variant-numeric:tabular-nums; }
 .topbar strong,.eyebrow { display:block; }
 .eyebrow { color:var(--muted); font-size:.75rem; text-transform:uppercase; letter-spacing:.12em; }
 .app-content { min-height:calc(100dvh - 10rem); padding:1rem; }
@@ -151,8 +152,16 @@ main {
 }
 
 .metric strong { display: block; font-size: 1.2rem; }
+.bar-label { display:flex; justify-content:space-between; gap:1rem; margin-bottom:.4rem; font-variant-numeric:tabular-nums; }
+.bar { display:block; width:100%; height:.8rem; border:0; border-radius:999px; overflow:hidden; background:#100d0b; }
+.bar::-webkit-progress-bar { background:#100d0b; }
+.bar::-webkit-progress-value { background:var(--success); border-radius:999px; }
+.bar.xp::-webkit-progress-value { background:var(--accent); }
+.bar::-moz-progress-bar { background:var(--success); border-radius:999px; }
+.bar.xp::-moz-progress-bar { background:var(--accent); }
 
 @media (max-width: 34rem) {
   main:not(.app-content) { padding: .8rem; }
   .metric-grid { grid-template-columns: 1fr; }
+  .shell-stats { display:none; }
 }

@@ -4,6 +4,8 @@ Canonical Markdown handoffs for the Kempape MVP.
 
 ## Implementation
 
+- [Handoff 02 — Core player engine](implementation/HANDOFF_02_CORE_PLAYER_ENGINE.md)
+
 - [Handoff 01 — Foundation and authentication](implementation/HANDOFF_01_FOUNDATION_AUTH.md)
 
 ## Architecture freeze

@@ -10,6 +10,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "seed:dev": "node --env-file=.env.local scripts/seed-dev.mjs",
+    "lifecycle:dev": "node --env-file=.env.local scripts/set-dev-lifecycle.mjs",
     "check": "npm run typecheck && npm run test && npm run build"
   },
   "dependencies": {

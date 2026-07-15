@@ -1,12 +1,23 @@
 import { FESTIVAL_CONFIG } from "@/lib/game/config";
 
-export type LifecycleStatus = "before_start" | "active" | "paused" | "ended";
+export type LifecycleStatus = "unavailable" | "before_start" | "active" | "paused" | "chaos_resolution" | "ended";
 export type PauseInterval = { startedAt: Date; endedAt: Date | null };
+export type RunLifecycleInput = {
+  phase: string;
+  scheduledStartsAt: Date;
+  startedAt: Date | null;
+  normalGameplayEndsAt: Date;
+  chaosResolutionEndsAt: Date;
+};
 
-export function getLifecycleStatus(now: Date, runPhase?: string): LifecycleStatus {
-  if (now.getTime() < Date.parse(FESTIVAL_CONFIG.startsAt)) return "before_start";
-  if (now.getTime() >= Date.parse(FESTIVAL_CONFIG.endsAt) || runPhase === "ended" || runPhase === "archived" || runPhase === "chaos_resolution") return "ended";
-  if (runPhase === "paused") return "paused";
+export function getLifecycleStatus(now: Date, run: RunLifecycleInput | null): LifecycleStatus {
+  if (!run) return "unavailable";
+  const timestamp = now.getTime();
+  if (run.phase === "ended" || run.phase === "archived" || timestamp >= run.chaosResolutionEndsAt.getTime()) return "ended";
+  if (run.phase === "chaos_resolution" || timestamp >= run.normalGameplayEndsAt.getTime()) return "chaos_resolution";
+  const effectiveStart = run.startedAt ?? run.scheduledStartsAt;
+  if (run.phase === "setup" || timestamp < effectiveStart.getTime()) return "before_start";
+  if (run.phase === "paused") return "paused";
   return "active";
 }
 
@@ -17,31 +28,19 @@ export function getFestivalCycleKey(now: Date): string | null {
   return FESTIVAL_CONFIG.cycleBoundaries.find((cycle) => timestamp >= Date.parse(cycle.startsAt) && timestamp < Date.parse(cycle.endsAt))?.key ?? null;
 }
 
-export function isFinalMidnight(now: Date): boolean {
-  return now.getTime() === Date.parse(FESTIVAL_CONFIG.finalMidnightAt);
-}
+export function isFinalMidnight(now: Date): boolean { return now.getTime() === Date.parse(FESTIVAL_CONFIG.finalMidnightAt); }
+export function pauseDurationMs(intervals: PauseInterval[], until: Date): number { return intervals.reduce((total,pause)=>{const end=Math.min((pause.endedAt??until).getTime(),until.getTime());return total+Math.max(0,end-pause.startedAt.getTime());},0); }
+export function effectiveElapsedMs(startedAt: Date, now: Date, intervals: PauseInterval[]): number { return Math.max(0,now.getTime()-startedAt.getTime()-pauseDurationMs(intervals,now)); }
 
-export function pauseDurationMs(intervals: PauseInterval[], until: Date): number {
-  return intervals.reduce((total, pause) => {
-    const end = Math.min((pause.endedAt ?? until).getTime(), until.getTime());
-    return total + Math.max(0, end - pause.startedAt.getTime());
-  }, 0);
-}
-
-export function effectiveElapsedMs(startedAt: Date, now: Date, intervals: PauseInterval[]): number {
-  return Math.max(0, now.getTime() - startedAt.getTime() - pauseDurationMs(intervals, now));
-}
-
-export function lifecycleSnapshot(now: Date, runPhase?: string, pauses: PauseInterval[] = []) {
-  const status = getLifecycleStatus(now, runPhase);
+export function lifecycleSnapshot(now: Date, run: RunLifecycleInput | null, pauses: PauseInterval[] = []) {
+  const status=getLifecycleStatus(now,run);
+  const effectiveStart=run?.startedAt??run?.scheduledStartsAt??null;
   return {
-    serverNow: now.toISOString(),
-    status,
-    mutationsAllowed: status === "active",
-    festivalDayKey: getFestivalCycleKey(now),
-    millisecondsUntilStart: Math.max(0, Date.parse(FESTIVAL_CONFIG.startsAt) - now.getTime()),
-    millisecondsUntilEnd: Math.max(0, Date.parse(FESTIVAL_CONFIG.endsAt) - now.getTime()),
-    effectiveElapsedMilliseconds: effectiveElapsedMs(new Date(FESTIVAL_CONFIG.startsAt), now, pauses),
-    isFinalMidnightWindow: now.getTime() >= Date.parse(FESTIVAL_CONFIG.finalMidnightAt) && now.getTime() < Date.parse(FESTIVAL_CONFIG.endsAt),
+    serverNow:now.toISOString(),status,mutationsAllowed:status==="active",festivalDayKey:getFestivalCycleKey(now),
+    startsAt:effectiveStart?.toISOString()??null,normalGameplayEndsAt:run?.normalGameplayEndsAt.toISOString()??null,chaosResolutionEndsAt:run?.chaosResolutionEndsAt.toISOString()??null,
+    millisecondsUntilStart:effectiveStart?Math.max(0,effectiveStart.getTime()-now.getTime()):0,
+    millisecondsUntilEnd:run?Math.max(0,run.normalGameplayEndsAt.getTime()-now.getTime()):0,
+    effectiveElapsedMilliseconds:effectiveStart?effectiveElapsedMs(effectiveStart,now,pauses):0,
+    isFinalMidnightWindow:Boolean(run&&now.getTime()>=Date.parse(FESTIVAL_CONFIG.finalMidnightAt)&&now.getTime()<run.normalGameplayEndsAt.getTime()),
   } as const;
 }
