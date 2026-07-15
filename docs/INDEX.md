@@ -4,6 +4,8 @@ Canonical Markdown handoffs for the Kempape MVP.
 
 ## Implementation
 
+- [Handoff 03 — Actions and Daily Quests](implementation/HANDOFF_03_ACTIONS_AND_DAILY_QUESTS.md)
+
 - [Handoff 02 — Core player engine](implementation/HANDOFF_02_CORE_PLAYER_ENGINE.md)
 
 - [Handoff 01 — Foundation and authentication](implementation/HANDOFF_01_FOUNDATION_AUTH.md)
