@@ -9,6 +9,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
+    "seed:dev": "node --env-file=.env.local scripts/seed-dev.mjs",
     "check": "npm run typecheck && npm run test && npm run build"
   },
   "dependencies": {

@@ -4,6 +4,7 @@ export const FESTIVAL_CONFIG = {
   timeZone: "Europe/Berlin",
   startsAt: "2026-07-16T11:30:00+02:00",
   endsAt: "2026-07-20T03:00:00+02:00",
+  chaosResolutionEndsAt: "2026-07-20T03:15:00+02:00",
 
   cycleBoundaries: [
     {
@@ -53,16 +54,7 @@ export const FESTIVAL_CONFIG = {
 
   maxPlayers: 6,
 
-  /**
-   * FINAL AUDIT DECISION:
-   * "continue_for_ranking" keeps earning XP after Level 40 while Level/HP
-   * stay capped. This prevents all Level 40 players from tying forever.
-   *
-   * Change to "cap" only if permanent Level 40 ties are intended.
-   */
-  xpAfterMaxLevel: "continue_for_ranking" as
-    | "continue_for_ranking"
-    | "cap",
+  xpAfterMaxLevel: "cap" as const,
 } as const;
 
 export const GAME_CONSTANTS = {

@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "characters": {},
+  "faces": {},
+  "ui": {},
+  "templates": {
+    "character_template": {
+      "displayName": "Unassigned character template",
+      "path": "/assets/character-template.png",
+      "mime": "image/png",
+      "width": 398,
+      "height": 655,
+      "assignable": false
+    }
+  },
+  "unresolved": [
+    "Production character and face assets have not been supplied.",
+    "Primary navigation assets nav_home, nav_actions, nav_store, nav_quests and nav_action_pool have no approved raster mappings; the shell uses code-native text symbols.",
+    "No approved logo or background asset is available."
+  ]
+}

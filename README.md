@@ -1,25 +1,17 @@
-# Kempape Markdown Documentation Package — V2
+# Kempape MVP
 
-Copy the contents of this package into the root of the Kempape repository.
+Private, mobile-first festival companion built with Next.js, strict TypeScript, Supabase PostgreSQL, Zod and Vitest.
 
-This version integrates the approved cross-system flows for:
+## Local setup
 
-* Actions with validation-only behavior.
-* Chaos Card snapshots, locks, two outgoing attacks, and delayed resolution.
-* The two-tab Validation Pool.
-* Testing and run-scoped data.
-* Remote admin reset.
-* Realtime synchronization priorities.
-* Level 40 ranking XP.
-* Runtime asset locations and naming.
+1. Copy `.env.example` to `.env.local` and supply local-only secrets of at least 32 random characters.
+2. Install dependencies with `npm install`.
+3. Start local Supabase with `npx supabase start` and apply the local schema with `npx supabase db reset`.
+4. Create the development run, player and one-time invite with `npm run seed:dev`.
+5. Start the app with `npm run dev`.
 
-## Installation
+The seed command refuses production by default and never persists a raw invite code. Do not run linked database push, reset, repair or seed operations without explicit review.
 
-1. Copy `AGENTS.md`, `CODEX_HANDOFF.md`, `docs`, and the included `public` example into the project root.
-2. Allow replacement of existing files with the same paths.
-3. Keep actual images under `public/assets/`.
-4. Rename `manifest.example.json` to `manifest.json` when creating the real asset manifest.
-5. Archive old TXT handoffs outside `docs/rules`.
-6. Review the Git diff before committing.
+Validation: `npm run check` and `git diff --check`.
 
-The old documentation ZIP should not remain the source of truth after this package is installed.
+See [docs/INDEX.md](docs/INDEX.md) for canonical rules and [Handoff 1 implementation](docs/implementation/HANDOFF_01_FOUNDATION_AUTH.md) for the implemented foundation.

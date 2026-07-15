@@ -1,0 +1,4 @@
+"use client";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+export function Countdown({ target, serverNow }: { target: string; serverNow: string }) { const router=useRouter(); const offset=Date.parse(serverNow)-Date.now(); const [remaining,setRemaining]=useState(()=>Math.max(0,Date.parse(target)-(Date.now()+offset))); useEffect(()=>{const id=setInterval(()=>{const value=Math.max(0,Date.parse(target)-(Date.now()+offset)); setRemaining(value); if(value===0){clearInterval(id);router.refresh();}},1000);return()=>clearInterval(id)},[target,offset,router]); const seconds=Math.floor(remaining/1000); const days=Math.floor(seconds/86400); const hours=Math.floor((seconds%86400)/3600); const minutes=Math.floor((seconds%3600)/60); return <strong className="countdown">{days}d {String(hours).padStart(2,'0')}h {String(minutes).padStart(2,'0')}m {String(seconds%60).padStart(2,'0')}s</strong>; }

@@ -1,4 +1,4 @@
-import { FESTIVAL_CONFIG, GAME_CONSTANTS } from "@/lib/game/config";
+import { GAME_CONSTANTS } from "@/lib/game/config";
 
 export const BASE_LEVEL_XP = 100;
 export const XP_GROWTH_RATE = 1.1;
@@ -15,11 +15,8 @@ export function xpNeededForNextLevel(level: number): number | null {
   );
 }
 
-/**
- * Virtual reward basis used only when XP continues for ranking at Level 40.
- * It follows the same curve formula for Level 40 even though Level 41 does
- * not exist. This equals 4,110 XP with the approved curve.
- */
+/** Existing curve reference retained for definition compatibility. It is not
+ * awarded at Level 40; total XP is capped at MAX_LEVEL_THRESHOLD. */
 export const MAX_LEVEL_RANKING_XP_BASIS = roundToNearestTen(
   BASE_LEVEL_XP * Math.pow(XP_GROWTH_RATE, GAME_CONSTANTS.maxLevel - 1),
 );
@@ -27,10 +24,6 @@ export const MAX_LEVEL_RANKING_XP_BASIS = roundToNearestTen(
 export function xpRewardBasisForLevel(level: number): number | null {
   const normalRequirement = xpNeededForNextLevel(level);
   if (normalRequirement !== null) return normalRequirement;
-
-  if (FESTIVAL_CONFIG.xpAfterMaxLevel === "continue_for_ranking") {
-    return MAX_LEVEL_RANKING_XP_BASIS;
-  }
 
   return null;
 }
@@ -70,11 +63,7 @@ export function getMaxHpForLevel(level: number): number {
 export function normalizeTotalXpAfterGain(totalXp: number): number {
   const safeXp = Math.max(0, Math.floor(totalXp));
 
-  if (FESTIVAL_CONFIG.xpAfterMaxLevel === "cap") {
-    return Math.min(safeXp, MAX_LEVEL_THRESHOLD);
-  }
-
-  return safeXp;
+  return Math.min(safeXp, MAX_LEVEL_THRESHOLD);
 }
 
 export function getDeathPenaltyRate(level: number): number {
