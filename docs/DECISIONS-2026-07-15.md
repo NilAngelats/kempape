@@ -23,3 +23,12 @@ This record supersedes `DECISIONS-2026-07-14.md` and dedicated rule prose only f
 ## Pause confirmation
 
 Global admin pause remains approved because `rules/game-lifecycle-and-reset.md` explicitly defines it. Personal timers exclude the global paused duration. This decision does not add a new mechanic.
+
+## Epic Gold equipment
+
+- Gold equipment completes one generation interval every two effective hours, not every hour.
+- Helmet and Boots grant 1 coin per completed interval; Legs grant 2; Armor grants 3.
+- The four equipped pieces total 7 coins per interval and the full-set cursor grants 1 additional coin, for 8 coins every two effective hours.
+- There is no daily cap. Offline and Hospital time count; global-pause and Chaos-lock time do not.
+- Each equipped piece and the full-set bonus keep independent durable cursors. Completed intervals settle before unequip/replacement; incomplete progress is discarded when the applicable item or full set breaks.
+- This section supersedes all older one-hour and `+3` full-set Gold prose in Equipment and Economy documents.

@@ -4,6 +4,8 @@ Canonical Markdown handoffs for the Kempape MVP.
 
 ## Implementation
 
+- [Handoff 04 — Inventory, Equipment, Consumables and Passive Effects](implementation/HANDOFF_04_INVENTORY_EQUIPMENT_CONSUMABLES.md)
+
 - [Handoff 03 — Actions and Daily Quests](implementation/HANDOFF_03_ACTIONS_AND_DAILY_QUESTS.md)
 
 - [Handoff 02 — Core player engine](implementation/HANDOFF_02_CORE_PLAYER_ENGINE.md)
@@ -30,7 +32,7 @@ Canonical Markdown handoffs for the Kempape MVP.
 ## Authority
 
 1. `rules/config.md` owns fixed timing, timezone, final-midnight behavior and Chaos resolution.
-2. [July 15 corrections](DECISIONS-2026-07-15.md) are the latest authority for Action rejection/expiry, capped Level-40 XP and pause confirmation.
+2. [July 15 corrections](DECISIONS-2026-07-15.md) are the latest authority for Action rejection/expiry, capped Level-40 XP, pause confirmation and two-hour Epic Gold generation.
 3. [July 14 decisions](DECISIONS-2026-07-14.md) remain authoritative for topics not superseded on July 15.
 4. `rules/game-lifecycle-and-reset.md` owns runs, testing, reset, global pause and end.
 5. Each dedicated system document owns its unaffected mechanics.
